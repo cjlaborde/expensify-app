@@ -13,9 +13,9 @@ import 'react-dates/initialize'
 
 const store = configureStore()
 
-store.dispatch(addExpense({ description: 'Water bill', amount: 4500, createdAt: 1000}))
-store.dispatch(addExpense( { description: 'Gas bill', amount: 1000, createdAt: 30000 }))
-store.dispatch(addExpense( { description: 'Rent', amount: 109500, createdAt: 20000 }))
+// store.dispatch(addExpense({ description: 'Water bill', amount: 4500, createdAt: 1000}))
+// store.dispatch(addExpense( { description: 'Gas bill', amount: 1000, createdAt: 30000 }))
+// store.dispatch(addExpense( { description: 'Rent', amount: 109500, createdAt: 20000 }))
 
 // for testing
 // store.dispatch(setTextFilter('water'))
@@ -25,9 +25,9 @@ store.dispatch(addExpense( { description: 'Rent', amount: 109500, createdAt: 200
 // }, 3000)
 
 // Get entire state of all the expenses and filters
-const state = store.getState()
-const visibleExpenses = getVisibleExpenses(state.expenses, state.filters) // get this data from the return value of getVisibleExpenses above
-console.log(visibleExpenses)
+// const state = store.getState()
+// const visibleExpenses = getVisibleExpenses(state.expenses, state.filters) // get this data from the return value of getVisibleExpenses above
+// console.log(visibleExpenses)
 
 
 // Redux Step# 1 | define store that we want to provide to all of our components
