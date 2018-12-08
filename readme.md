@@ -44,6 +44,11 @@ git push -u orgin master
 
 git push --set-upstream origin master
 
+## Git include modified files only and not new files
+
+git commit -a -m "message here"
+git commit -am "Setp devDependencies and fist folder"
+
 ## WebPack Production 
 
   "scripts": {
