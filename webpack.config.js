@@ -12,7 +12,7 @@
         entry: './src/app.js',
         // entry: './src/playground/hoc.js',
         output: {
-            path: path.join(__dirname, 'public'),
+            path: path.join(__dirname, 'public', 'dist'),
             filename: 'main.js'
         },
         module: {
@@ -49,8 +49,10 @@
         ],
         devtool: isProduction ? 'source-map' : 'inline-source-map',
         devServer: {
+            // https://webpack.js.org/configuration/dev-server/#devserver-publicpath-
             contentBase: path.join(__dirname, 'public'),
-            historyApiFallback: true
+            historyApiFallback: true,
+            publicPath: '/dist/'
         }
     }
  }
