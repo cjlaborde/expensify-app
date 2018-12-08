@@ -1,10 +1,15 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import expenses from '../fixtures/expenses'
 import ExpensesSummary from '../../components/ExpensesSummary';
 // import { Link } from 'react-router-dom'
 
-test('Should render ExpensesSummary correctly', () => {
-    const wrapper = shallow(<ExpensesSummary { ...expenses[0] } />)
+test('Should correctly render ExpensesSummary with 1 expense', () => {
+    const wrapper = shallow(<ExpensesSummary />)
     expect(wrapper).toMatchSnapshot()
 })
+
+test('Should correctly render ExpensesSummary with 1 expense', () => {
+    const wrapper = shallow(<ExpensesSummary expenseCount={23} expensesTotal={235543535}/>)
+    expect(wrapper).toMatchSnapshot()
+})
+
