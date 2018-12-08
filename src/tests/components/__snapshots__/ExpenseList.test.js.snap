@@ -8,7 +8,7 @@ exports[`should render ExpenseList with empty message 1`] = `
 </div>
 `;
 
-exports[`should render ExpenseList with expsenses 1`] = `
+exports[`should render ExpenseList with expenses 1`] = `
 <div>
   <ExpenseListItem
     amount={195}

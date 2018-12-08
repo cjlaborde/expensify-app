@@ -2,13 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 import ExpenseListItem from './ExpenseListItem'
 import selectExpenses from '../selectors/expenses'
+// import getExpenseTotal from '../selectors/expenses-total'
 //use connect function in all individual components
 
 // #1) regular unconnected component
 //  unconnected version we use on our test cases/ we will use snapshop testing passing some data in to see if it work as expected.
 export const ExpenseList = (props) => (
     <div>
-    {
+   {        
         props.expenses.length === 0 ? (
             <p>No expenses</p>
         ) : (

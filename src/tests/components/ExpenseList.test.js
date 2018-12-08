@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 import { ExpenseList } from '../../components/ExpenseList'
 import expenses from '../fixtures/expenses'
 
-test('should render ExpenseList with expsenses', () => {
+test('should render ExpenseList with expenses', () => {
     // requires props so you need to add it
     const wrapper = shallow(<ExpenseList expenses={expenses} />)
     expect(wrapper).toMatchSnapshot()
