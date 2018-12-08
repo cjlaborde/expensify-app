@@ -22,7 +22,6 @@ export class AddExpensePage extends React.Component {
                 // }}
                 // use onSubmit={this.onSubmit} instead
             />
-            />
         </div>
         )
     }
