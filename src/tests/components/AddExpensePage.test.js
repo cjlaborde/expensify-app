@@ -8,14 +8,14 @@ import expenses from '../fixtures/expenses'
 // }
 
 // https://jest-bot.github.io/jest/docs/api.html#content
-let addExpense, history, wrapper
+let startAddExpense, history, wrapper
 
 beforeEach(() => {
 // we use same since we still rendering
-    addExpense = jest.fn()
+    startAddExpense = jest.fn()
     history = { push: jest.fn() }
     // use spies defined above
-    wrapper = shallow(<AddExpensePage addExpense={addExpense} history={history} />)
+    wrapper = shallow(<AddExpensePage startAddExpense={startAddExpense} history={history} />)
 })
 
 test('should render AddExpensePage correctly', () => {
@@ -39,7 +39,7 @@ test('should handle onSubmit', () => {
     //     this.props.history.push('/')
     // }
 
-    expect(addExpense).toHaveBeenCalledWith(expenses[1])
+    expect(startAddExpense).toHaveBeenCalledWith(expenses[1])
     expect(history.push).toHaveBeenCalledWith('/')
 
 })
