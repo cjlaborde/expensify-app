@@ -28,6 +28,18 @@ const expensesReducer = (state = expensesReducerDefaultState, action) => {
                     return expense // means we do nothing since there was no match
                 }
             })
+        case 'SET_EXPENSES': 
+        return action.expenses
+        // return state.map((expense) => {
+
+        //     if (expense.id === action.id) {
+        //         return {
+        //             ...expense, ...action.expense, id: action.expense.id
+        //         }
+        //        } else {
+        //            expense
+        //        }
+        //     })
         default: 
         return state
     }
