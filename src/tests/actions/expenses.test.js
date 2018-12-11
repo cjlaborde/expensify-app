@@ -1,4 +1,4 @@
-import { startAddExpense, addExpense, editExpense, removeExpense, setExpenses, startSetExpenses } from '../../actions/expenses'
+import { startAddExpense, addExpense, editExpense, removeExpense, setExpenses, startSetExpenses, startRemoveExpense } from '../../actions/expenses'
 import expenses from '../fixtures/expenses'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
@@ -20,6 +20,26 @@ test('should setup remove expense action object', () => {
     expect(action).toEqual({
         type: 'REMOVE_EXPENSE',
         id: '123abc'
+    })
+})
+
+test('should setup startRemoveExpense action object', (done) => {
+    // return database.ref(`expenses/${id}`).set(null).then((ref) => {
+    const store = createMockStore({})
+    const id = expenses[2].id
+    store.dispatch(startRemoveExpense({id})).then(() => {
+        // make test about the action
+       const actions = store.getActions()
+       expect(actions[0]).toEqual({
+           type: 'REMOVE_EXPENSE', 
+            id
+       })
+
+    return database.ref(`expenses/${id}`).once('value')
+        }).then((snapshot) => {
+        expect(snapshot.val()).toBeFalsy() 
+        // expect(snapshot.val()).toEqual(null) 
+        done() // going to force jest to wait till this moment in time. || this fixes above issue.
     })
 })
 
@@ -142,6 +162,9 @@ test('should fetch expenses from firebase', (done) => {
        done()
     })
 })
+
+
+
 
 // test('Should setup add expense action object with default values', () => {
 //     const action = addExpense(addExpense)
