@@ -1,67 +1,41 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import ExpenseForm from './ExpenseForm'
-import { editExpense, startRemoveExpense } from '../actions/expenses';
+import React from 'react';
+import { connect } from 'react-redux';
+import ExpenseForm from './ExpenseForm';
+import { startEditExpense, startRemoveExpense } from '../actions/expenses';
 
 export class EditExpensePage extends React.Component {
-    onSubmit = (expense) => {
-        this.props.editExpense(this.props.expense.id, expense)
-        this.props.history.push('/')
-    }
-    onRemove = () => {
-        this.props.startRemoveExpense({ id: this.props.expense.id })
-        this.props.history.push('/')
-    }
-    render() {
-        return (
-            <div>
-                <ExpenseForm
-                    expense={this.props.expense}
-                    onSubmit={this.onSubmit}
-                />
-                <button onClick={this.onRemove}>Remove</button>
-            </div>
-        )
-    }
-}
-// const EditExpensePage = (props) => {
-//     //console.log(props) //use to find this path {props.match.params.id} | {props.expense}
-//     // Editing the expense with id of {props.match.params.id}
-//     return  (
-//         <div>
-//             <ExpenseForm
-//                 expense={props.expense}
-//                 onSubmit={(expense) => {
-//                     // Dispatch the action to edit the expense
-//                     props.dispatch(editExpense(props.expense.id, expense))
-//                     // Redirect to the dashboard
-//                     props.history.push('/')
-//                     // console.log('updated', expense)
-//                 }}
-//             />
-//             <button 
+  onSubmit = (expense) => {
+    this.props.startEditExpense(this.props.expense.id, expense);
+    this.props.history.push('/');
+  };
+  onRemove = () => {
+    this.props.startRemoveExpense({ id: this.props.expense.id });
+    this.props.history.push('/');
+  };
+  render() {
+    return (
+      <div>
+        <ExpenseForm
+          expense={this.props.expense}
+          onSubmit={this.onSubmit}
+        />
+        <button onClick={this.onRemove}>Remove</button>
+      </div>
+    );
+  }
+};
 
-//             onClick={() => {
-//                 // console.log(props.expense.id)
-//                 props.dispatch(startRemoveExpense({ id: props.expense.id }))
-//                 props.history.push('/')
-//             }}
-//             >Remove</button>
-//         </div>
-//     )
-// }
-
-// we want to give the component the current expense object 
 const mapStateToProps = (state, props) => ({
-    expense: state.expenses.find((expense) => expense.id === props.match.params.id)
-})
+  expense: state.expenses.find((expense) => expense.id === props.match.params.id)
+});
 
 const mapDispatchToProps = (dispatch, props) => ({
-    editExpense: (id, expense) => dispatch(editExpense(id, expense)),
-    startRemoveExpense: (data) => dispatch(startRemoveExpense(data))// what we going to do on submit (pass expense) => do this call (dispatch(addExpense(expense))
-})
+  startEditExpense: (id, expense) => dispatch(startEditExpense(id, expense)),
+  startRemoveExpense: (data) => dispatch(startRemoveExpense(data))
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditExpensePage)
+export default connect(mapStateToProps, mapDispatchToProps)(EditExpensePage);
+
 /**
  * We want to get the entire expense object
  * step#1 import connect

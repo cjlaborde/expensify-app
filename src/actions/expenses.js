@@ -1,6 +1,5 @@
  import uuid from 'uuid'
  import database from '../firebase/firebase'
-import expenses from '../selectors/expenses';
 
 // without firebase
 
@@ -40,7 +39,6 @@ export const startAddExpense = (expenseData = {}) => {
         // we promise chain it here from expenses.test.js
            return database.ref('expenses').push(expense).then((ref) => {
             // we need to dispash otherwise redux store not going to change
-
             // * we care that the correct action was dispatch
             dispatch(addExpense({
                 id: ref.key,
@@ -57,8 +55,8 @@ export const removeExpense = ({ id } = {}) => ({
 
 export const startRemoveExpense = ({ id } = {}) => {
     return (dispatch) => {
-    return database.ref(`expenses/${id}`).remove().then((ref) => {
-            dispatch(removeExpense({id}))
+    return database.ref(`expenses/${id}`).remove().then(() => {
+            dispatch(removeExpense({ id }))
         })
     }
 }
@@ -70,11 +68,18 @@ export const editExpense = (id, updates) => ({
     updates
 })
 
+export const startEditExpense = (id, updates) => {
+    return (dispatch) => {
+        return database.ref(`expenses/${id}`).update(updates).then(() => {
+            dispatch(editExpense(id, updates))
+        })
+    }
+}
+
 // SET_EXPENSES
 export const setExpenses = (expenses) => ({
     type: 'SET_EXPENSES',
     expenses
-
 })
 
 // export const startSetExpenses
@@ -94,4 +99,3 @@ export const startSetExpenses = () => {
         })
     }  
 }
-
