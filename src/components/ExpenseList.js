@@ -8,26 +8,27 @@ import selectExpenses from '../selectors/expenses'
 // #1) regular unconnected component
 //  unconnected version we use on our test cases/ we will use snapshop testing passing some data in to see if it work as expected.
 export const ExpenseList = (props) => (
-    <div>
-   {        
-        props.expenses.length === 0 ? (
-            <p>No expenses</p>
-        ) : (
-            props.expenses.map((expense) => {
-                return <ExpenseListItem key={expense.id} {...expense} />
-            })
-        )
-    }
+    <div className="content-container">
+        <div className="list-header">
+            <div className="show-for-mobile">Expenses</div>
+            <div className="show-for-desktop">Expense</div>
+            <div className="show-for-desktop">Amount</div>
         </div>
-        // {props.expenses.map((expense) => {
-        //     return <ExpenseListItem
-        //     key={expense.createdAt}
-        //     description={expense.description}
-        //     amount={expense.amount}
-        //     createdAt={expense.createdAt}
-        //     />
-        // })    
-        // }
+        <div className="list-body">
+            {        
+                props.expenses.length === 0 ? (
+                    <div className="list-item list-item--message">
+                        <span>No expenses</span>
+                    </div>
+                ) : (
+                    props.expenses.map((expense) => {
+                        return <ExpenseListItem key={expense.id} {...expense} />
+                    })
+                )
+            }
+        </div>
+        </div>
+
 )
 // Redux Step# 2 Create new highee components
 // #2) function

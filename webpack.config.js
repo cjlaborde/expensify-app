@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === 'test') {
 
     return {
         mode: 'development',
-        entry: './src/app.js',
+        entry: ['babel-polyfill', './src/app.js'],
         // entry: './src/playground/hoc.js',
         output: {
             path: path.join(__dirname, 'public', 'dist'),

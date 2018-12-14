@@ -11,7 +11,9 @@ import './styles/styles.scss'
 import 'react-dates/lib/css/_datepicker.css'
 import 'react-dates/initialize'
 import { firebase } from './firebase/firebase'
+import LoadingPage from './components/LoadingPage'
 // import './playground/promises'
+
 
 const store = configureStore()
 
@@ -47,7 +49,7 @@ const renderApp = () => {
     }
 }
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById('app'))
+ReactDOM.render(<LoadingPage />, document.getElementById('app'))
 
 /**
  When user first visit webpage it automatically trigger if we are logged in or logged out
